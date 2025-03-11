@@ -62,4 +62,4 @@ RUN set -eux; \
 RUN echo 'export PS1="\u@r401-unify> "' >> /root/.bashrc
 
 WORKDIR ${WORKSPACE_DIR}
-ENTRYPOINT deploy.sh 0-WebTest --no-restart && catalina.sh start && /bin/bash
+ENTRYPOINT update.sh && deploy.sh 0-WebTest --no-restart && catalina.sh start && /bin/bash
