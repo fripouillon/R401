@@ -2,12 +2,7 @@
 
 # System Config
 OS=$(uname -s)
-if [[ "${OS}" == 'Linux' ]]; then
-    export WORKSPACE_DIR=/workspace
-    export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
-    export TOMCAT_VERSION=10.1.36
-    export TOMCAT_HOME=/usr/local/apache-tomcat-${TOMCAT_VERSION}
-elif [[ "${OS}" == 'Darwin' ]]; then
+if [[ "${OS}" == 'Darwin' ]]; then
     export WORKSPACE_DIR=${PWD}
     export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home
     export TOMCAT_VERSION=10.1.19
@@ -39,11 +34,11 @@ if [[ "$1" != "" ]]; then
 
     # Source Modules Config
     modules=".\"${PROJECT_NAME}\".\"modules\""
-    modules=$(jq ${modules} ${BINARY_DIR}/configs.json)
+    modules=$(jq ${modules} ${BINARY_DIR}/deploy.json)
     export PROJECT_MODULES=${modules//"\""}
 
     classpath=".\"${PROJECT_NAME}\".\"classpath\""
-    classpath=$(jq ${classpath} ${BINARY_DIR}/configs.json)
+    classpath=$(jq ${classpath} ${BINARY_DIR}/deploy.json)
     classpath=${classpath//"\""}
     export PROJECT_CLASSPATH=""
     for jar in ${classpath//":"/" "}; do

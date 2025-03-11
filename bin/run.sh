@@ -2,10 +2,7 @@
 
 # System Config
 OS=$(uname -s)
-if [[ "${OS}" == 'Linux' ]]; then
-    export WORKSPACE_DIR=/workspace
-    export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
-elif [[ "${OS}" == 'Darwin' ]]; then
+if [[ "${OS}" == 'Darwin' ]]; then
     export WORKSPACE_DIR=${PWD}
     export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home
     export JAVAFX_VERSION=21.0.2
@@ -24,11 +21,11 @@ echo ------------------------------
 
 # Source Modules
 modules=".\"${PROJECT_NAME}\".\"modules\""
-modules=$(jq ${modules} ${BINARY_DIR}/run.json)
+modules=$(jq ${modules} ${BINARY_DIR}/configs.json)
 export PROJECT_MODULES=${modules//"\""}
 
 classpath=".\"${PROJECT_NAME}\".\"classpath\""
-classpath=$(jq ${classpath} ${BINARY_DIR}/run.json)
+classpath=$(jq ${classpath} ${BINARY_DIR}/configs.json)
 classpath=${classpath//"\""}
 export PROJECT_CLASSPATH=""
 for jar in ${classpath//":"/" "}; do
