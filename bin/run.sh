@@ -21,11 +21,11 @@ echo ------------------------------
 
 # Source Modules
 modules=".\"${PROJECT_NAME}\".\"modules\""
-modules=$(jq ${modules} ${BINARY_DIR}/configs.json)
+modules=$(jq ${modules} ${BINARY_DIR}/run.json)
 export PROJECT_MODULES=${modules//"\""}
 
 classpath=".\"${PROJECT_NAME}\".\"classpath\""
-classpath=$(jq ${classpath} ${BINARY_DIR}/configs.json)
+classpath=$(jq ${classpath} ${BINARY_DIR}/run.json)
 classpath=${classpath//"\""}
 export PROJECT_CLASSPATH=""
 for jar in ${classpath//":"/" "}; do
@@ -35,6 +35,7 @@ done
 # Test commands
 echo + CLEAR BINARY DIRECTORY [${PROJECT_HOME}/bin]
 rm -f ${PROJECT_HOME}/bin/*
+mkdir -p ${PROJECT_HOME}/bin
 
 for fxml in $(find ${PROJECT_HOME}/src -name "*.fxml"); do
     echo + COPY FXML FILE [${fxml}] TO [${PROJECT_HOME}/bin]
