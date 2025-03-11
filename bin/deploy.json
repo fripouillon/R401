@@ -1,0 +1,26 @@
+{
+    "0-WebTest": {
+        "modules": "jakarta.servlet",
+        "classpath": "jakarta.servlet-api-6.0.0.jar"
+    },
+    "3-ServletAPI": {
+        "modules": "jakarta.servlet",
+        "classpath": "jakarta.servlet-api-6.0.0.jar"
+    },
+    "5-HttpRequestAPI": {
+        "modules": "",
+        "classpath": ""
+    },
+    "21-WebMVC": {
+        "modules": "jakarta.json,jakarta.servlet",
+        "classpath": "parsson-1.1.5.jar:jakarta.json-api-2.1.3.jar:jakarta.servlet-api-6.0.0.jar"
+    },
+    "31-WebChat": {
+        "modules": "jakarta.json,jakarta.websocket",
+        "classpath": "parsson-1.1.5.jar:jakarta.json-api-2.1.3.jar:jakarta.websocket-api-2.1.0.jar:jakarta.websocket-client-api-2.1.0.jar"
+    },
+    "32-WebChat": {
+        "modules": "jakarta.json,jakarta.websocket",
+        "classpath": "parsson-1.1.5.jar:jakarta.json-api-2.1.3.jar:jakarta.websocket-api-2.1.0.jar:jakarta.websocket-client-api-2.1.0.jar"
+    }
+}
